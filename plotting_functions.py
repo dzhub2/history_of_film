@@ -70,8 +70,8 @@ def load_quotes():
 def load_regression_result():
     """Load XGBoost regression feature importance files."""
 
-    importances_return = pd.read_csv("../output/importances_return.csv")
-    importances_rating = pd.read_csv("../output/importances_rating.csv")
+    importances_return = pd.read_csv("./output/importances_return.csv")
+    importances_rating = pd.read_csv("./output/importances_rating.csv")
 
     return importances_return, importances_rating
 
