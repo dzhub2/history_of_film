@@ -119,14 +119,27 @@ def wrangle_count_genre_year_bar(movies, nr_movies_per_year):
             result.append(el)
     genre_list = result
     # remove uninteresting genres
-    genre_list.remove('Film-Noir')
-    genre_list.remove('News')
+    try:
+        genre_list.remove('Film-Noir')
+    except:
+        pass
+    try:
+        genre_list.remove('News')
+    except:
+        pass
     try:
         genre_list.remove('Short')
     except:
         pass
-    genre_list.remove('Reality-TV')
-    genre_list.remove('Sport')
+    try:
+        genre_list.remove('Reality-TV')
+    except:
+        pass
+    try:
+        genre_list.remove('Sport')
+    except:
+        pass
+
 
     # combine all genres per year, then count how often each genre is contained in the created string
     genres_per_year = movies.groupby('startYear')['genres'].apply(lambda row: ','.join(row))
