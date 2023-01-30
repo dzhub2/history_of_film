@@ -224,16 +224,18 @@ fig_rating_sentiment.update_layout(
 	#create 1st y axis			
 	yaxis=dict(
 		title="Mean IMDB Rating",
-		titlefont=dict(color="#1f77b4"),
-		tickfont=dict(color="#1f77b4"),
+		titlefont=dict(color="#1f77b4", size=FONTSIZE),
+		tickfont=dict(color="#1f77b4", size=FONTSIZE),
         showgrid=True,
 		range=[5.4, 8.1]),
-	xaxis=dict(title="Genre")
+	xaxis=dict(title="Genre", titlefont=dict(size=FONTSIZE),
+		tickfont=dict(size=FONTSIZE))
 )
 fig_rating_sentiment.update_xaxes(tickangle=65)
 
 fig_rating_sentiment.update_layout(
 	title_text="Mean IMDB Rating per Genre: Positive vs. Negative Sentiment",#	width=800
+	legend_font_size = FONTSIZE,
 	hovermode="x", # or just x
 	plot_bgcolor = 'rgba(0, 0, 0, 0)',
 	legend=dict(yanchor="top", y=1.14, xanchor="right", x=0.97, orientation="h",
@@ -273,16 +275,18 @@ fig_votes_sentiment.update_layout(
 	#create 1st y axis			
 	yaxis=dict(
 		title="Mean IMDB Votes",
-		titlefont=dict(color="#1f77b4"),
-		tickfont=dict(color="#1f77b4"),
+		titlefont=dict(color="#1f77b4", size=FONTSIZE),
+		tickfont=dict(color="#1f77b4", size=FONTSIZE),
         showgrid=True,
 		range=[0, 201000]),
-	xaxis=dict(title="Genre")
+	xaxis=dict(title="Genre", titlefont=dict(size=FONTSIZE),
+		tickfont=dict(size=FONTSIZE))
 )
 fig_votes_sentiment.update_xaxes(tickangle=65)
 
 fig_votes_sentiment.update_layout(
 	title_text="Mean IMDB Votes per Genre: Positive vs. Negative Sentiment",#	width=800
+	legend_font_size = FONTSIZE,
 	hovermode="x", # or just x
 	plot_bgcolor = 'rgba(0, 0, 0, 0)',
 	legend=dict(yanchor="top", y=1.14, xanchor="right", x=0.97, orientation="h",
@@ -313,16 +317,18 @@ fig_sentiment_year.update_layout(
 	#create 1st y axis			
 	yaxis=dict(
 		title="Mean Sentiment Score",
-		titlefont=dict(color="#1f77b4"),
-		tickfont=dict(color="#1f77b4"),
+		titlefont=dict(color="#1f77b4", size=FONTSIZE),
+		tickfont=dict(color="#1f77b4", size=FONTSIZE),
         showgrid=True,
 		range=[-0.61, 0.41]),
-	xaxis=dict(title="Year")
+	xaxis=dict(title="Year", titlefont=dict(size=FONTSIZE),
+		tickfont=dict(size=FONTSIZE))
 )
 fig_sentiment_year.update_xaxes(tickangle=65)
 
 fig_sentiment_year.update_layout(
 	title_text="Mean Sentiment Score by Year",#	width=800
+	legend_font_size = FONTSIZE,
 	hovermode="x", # or just x
 	plot_bgcolor = 'rgba(0, 0, 0, 0)',
 	legend=dict(yanchor="top", y=1.27, xanchor="right", x=0.9, orientation="h",
@@ -362,11 +368,13 @@ fig_sentiment_genre_count.update_layout(
 )
 fig_sentiment_genre_count.update_layout(
 	title_text="Positive vs. Negative Sentiment Count per Genre",#	width=800
+	legend_font_size = FONTSIZE,
 	hovermode="x", # or just x
 	plot_bgcolor = 'rgba(0, 0, 0, 0)',
 	legend=dict(yanchor="top", y=1.14, xanchor="right", x=1, orientation="h",
 	bgcolor="white", bordercolor="Black", borderwidth=1),
-	xaxis=dict(title="Genre")
+	xaxis=dict(title="Genre", titlefont=dict(size=FONTSIZE),
+		tickfont=dict(size=FONTSIZE))
 )
 fig_sentiment_genre_count.update_xaxes(tickangle=65)
 #fig_sentiment_genre_count.layout.font.family = 'Arial'

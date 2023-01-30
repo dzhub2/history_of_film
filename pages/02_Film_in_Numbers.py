@@ -22,12 +22,6 @@ MARKEREDGECOLOR = 'midnightblue'
 
 st.sidebar.markdown(":roller_coaster: Film in Numbers :roller_coaster:")
 
-### Load and wrangle dataset
-# @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
-# def st_load_movie_data_from_genome():
-#     return load_movie_data_from_genome()
-# movies = st_load_movie_data_from_genome()
-
 ### Load film data
 @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
 def st_load_movie_filtered_director():
