@@ -46,7 +46,7 @@ def st_load_pure_tags():
     return load_pure_tags()
 
 genome = st_load_genome_data()  # this is filtered to relevance >= 0.5
-pure_tags = st_load_pure_tags()  # this is unfiltered
+#pure_tags = st_load_pure_tags()  # this is unfiltered
 
 tag_list_total = genome['tag'].unique()
 tag_list_user = st.multiselect(label='Choose which tags you want to be contained in the film:',
@@ -56,7 +56,10 @@ tag_list_user = st.multiselect(label='Choose which tags you want to be contained
 )
 
 # calculate total relevance combining all user-input tags
-user_subset_tags = pure_tags[pure_tags['tag'].isin(tag_list_user)]
+
+#user_subset_tags = pure_tags[pure_tags['tag'].isin(tag_list_user)]
+user_subset_tags = genome[genome['tag'].isin(tag_list_user)]
+
 user_subset_tags = user_subset_tags[['relevance','imdbId']].groupby('imdbId').mean().sort_values(by='relevance', ascending=False) #imdb id is index now
 user_subset_tags = user_subset_tags.rename(columns={'relevance':'meanRelevance'})
 # pick top 50 suggestions
