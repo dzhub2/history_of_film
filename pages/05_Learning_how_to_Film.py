@@ -16,7 +16,7 @@ CACHESUPPRESS = True
 st.sidebar.markdown(":male-scientist: Learning how to Film :male-scientist:")
 
 ### Load film data
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST, allow_output_mutation=True)
 def st_load_regression_result():
     return load_regression_result()
 
