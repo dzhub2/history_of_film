@@ -33,7 +33,8 @@ with col2:
 
 st.subheader("**Can Machine Learning be used to design the perfect film?**")
 st.write("On this page, we attempt to find the most relevant features to produce a film with \
-**maximum return** and **maximum IMDB rating**. To this end, **two regression models** were trained. Details on the implementation can be found in [this notebook]( !!!!!!!!!!!! LINK !!!!!!!!). \
+**maximum return** and **maximum IMDB rating**. To this end, **two regression models** were trained.\
+ Details on the implementation can be found in [this notebook](https://github.com/dzhub2/history_of_film/blob/main/ml_predict_rating_regression.ipynb). \
 ")
 
 st.markdown(
