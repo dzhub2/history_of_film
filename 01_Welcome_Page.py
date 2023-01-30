@@ -38,7 +38,7 @@ with col2:
 ### Display a random movie suggestion
 col1, col2 = st.columns([3,5])
 with col2:
-    if st.button("Give me a Movie!"):
+    if st.button("Give me a Film!"):
         pass
 
 mid1, col1, mid2, col2 = st.columns([2,1,10,10])
