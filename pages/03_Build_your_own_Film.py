@@ -55,7 +55,8 @@ def st_load_pure_tags_split(k):
 genome = load_movie_filtered_director()  # this is filtered to relevance >= 0.5
 #pure_tags = st_load_pure_tags_split()  # this is unfiltered
 
-tag_list_total = genome['tag'].unique()
+pure_tags = st_load_pure_tags_split(0)
+tag_list_total = pure_tags['tag'].unique()
 tag_list_user = st.multiselect(label='Choose which tags you want to be contained in the film:',
 						options=tag_list_total,
 						default="great ending",
