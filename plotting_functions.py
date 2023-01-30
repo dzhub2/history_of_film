@@ -14,7 +14,7 @@ import seaborn as sns
 def load_movie_data_from_genome():
     "Load main genome DB and extract unique movies without tags"
 
-    genome_imdb_ml_tmdb_cleaned_filtered = pd.read_csv("../output/genome_imdb_ml_tmdb_cleaned_filtered.csv")
+    genome_imdb_ml_tmdb_cleaned_filtered = pd.read_csv("./output/genome_imdb_ml_tmdb_cleaned_filtered.csv")
     # drop the genome data and extract pure movie data
     movies = genome_imdb_ml_tmdb_cleaned_filtered.drop(columns=['relevance', 'tag'], axis=1)
     movies = movies.drop_duplicates(subset=['primaryTitle'])
@@ -25,46 +25,46 @@ def load_movie_data_from_genome():
 def load_movie_filtered_director():
     "Load main genome DB, which has been cleaned, filtered and contains directors."
 
-    movies_cleaned_directors_filtered = pd.read_csv("../output/movies_cleaned_directors_filtered.csv")
+    movies_cleaned_directors_filtered = pd.read_csv("./output/movies_cleaned_directors_filtered.csv")
     
     return movies_cleaned_directors_filtered
 
 def load_genome_data():
     "Load main genome DB inlcuding tags + relevance for movies from the movie lense DB."
 
-    genome_imdb_ml_tmdb_cleaned_filtered = pd.read_csv("../output/genome_imdb_ml_tmdb_cleaned_filtered.csv")
+    genome_imdb_ml_tmdb_cleaned_filtered = pd.read_csv("./output/genome_imdb_ml_tmdb_cleaned_filtered.csv")
     #genome_imdb_ml_tmdb_cleaned_filtered.reset_index(drop=True, inplace=True)
     return genome_imdb_ml_tmdb_cleaned_filtered
 
 def load_pure_tags():
     "Load movie lens genome data without any prior filtering on the relevance of the tags."""
 
-    genome_pure_tags = pd.read_csv("../output/genome_pure_tags.csv")
+    genome_pure_tags = pd.read_csv("./output/genome_pure_tags.csv")
     return genome_pure_tags
 
 def load_franchises():
     """Load the dataset to display various franchise metrics."""
 
-    franchises_pivot = pd.read_csv("../output/franchises_pivot.csv")
+    franchises_pivot = pd.read_csv("./output/franchises_pivot.csv")
     franchises_pivot = franchises_pivot[franchises_pivot['Mean [$]']>1000000] # filter high earning franchises
     return franchises_pivot
 
 def load_dialogue_data():
     """Load the dataframe containing info about movies, dialogue and sentiment analysis."""
 
-    title_corpus = pd.read_csv("../output/title_corpus.csv")
+    title_corpus = pd.read_csv("./output/title_corpus.csv")
     return title_corpus
 
 def load_keyword_data():
     """Load the dataframe containing info about movies, keywrods and sentiment analysis."""
 
-    genome_movies_sentiment = pd.read_csv("../output/genome_movies_sentiment.csv")
+    genome_movies_sentiment = pd.read_csv("./output/genome_movies_sentiment.csv")
     return genome_movies_sentiment
 
 def load_quotes():
     """Load movie quote data for guessing game."""
 
-    quotes = pd.read_csv("../output/quotes_cleaned.csv")
+    quotes = pd.read_csv("./output/quotes_cleaned.csv")
     quotes = quotes.sample(frac=1) # randomize the dataframe once at load-time
     return quotes
 
