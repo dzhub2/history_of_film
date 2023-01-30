@@ -41,9 +41,9 @@ There are a total of 1128 tags, each with a relevance score labeling ~12.000 fil
 def st_load_genome_data():
     return load_genome_data()
 
-# @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
-# def st_load_pure_tags_split(k):
-#     return load_pure_tags_split(k)
+@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+def st_load_pure_tags_split(k):
+    return load_pure_tags_split(k)
 
 genome = st_load_genome_data()  # this is filtered to relevance >= 0.5
 #pure_tags = st_load_pure_tags_split()  # this is unfiltered
