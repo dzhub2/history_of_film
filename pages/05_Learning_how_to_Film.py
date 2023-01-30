@@ -67,6 +67,15 @@ plt.rcParams['ytick.major.width'] = 1
 plt.rcParams['ytick.left'] = True
 #sns.set_context(rc = {'patch.linewidth': 50})
 
+# Rename and filter:
+importances_return['Feature'] = importances_return['Feature'].replace({'budget': 'Budget', 'numVotes': 'Nr. of Votes'})
+importances_rating['Feature'] = importances_rating['Feature'].replace({'foreign_language': 'Is Foreign', 'numVotes': 'Nr. of Votes', 'runtimeMinutes': 'Runtime [min]'})
+
+# limit to most important features
+thresh = 0.05
+importances_return = importances_return[importances_return['Importance']>=thresh]
+importances_rating = importances_rating[importances_rating['Importance']>=thresh]
+
 # draw histogram of importances of each feature
 # Return
 
