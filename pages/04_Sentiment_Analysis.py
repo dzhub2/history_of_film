@@ -328,7 +328,6 @@ fig_sentiment_year.update_xaxes(tickangle=65)
 
 fig_sentiment_year.update_layout(
 	title_text="Mean Sentiment Score by Year",#	width=800
-	legend_font_size = FONTSIZE,
 	hovermode="x", # or just x
 	plot_bgcolor = 'rgba(0, 0, 0, 0)',
 	legend=dict(yanchor="top", y=1.27, xanchor="right", x=0.9, orientation="h",
@@ -371,7 +370,7 @@ fig_sentiment_genre_count.update_layout(
 	legend_font_size = FONTSIZE,
 	hovermode="x", # or just x
 	plot_bgcolor = 'rgba(0, 0, 0, 0)',
-	legend=dict(yanchor="top", y=1.14, xanchor="right", x=1, orientation="h",
+	legend=dict(yanchor="top", y=1.14, xanchor="right", x=0.97, orientation="h",
 	bgcolor="white", bordercolor="Black", borderwidth=1),
 	xaxis=dict(title="Genre", titlefont=dict(size=FONTSIZE),
 		tickfont=dict(size=FONTSIZE))
