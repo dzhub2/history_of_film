@@ -202,6 +202,7 @@ fig_rating_sentiment = go.Figure()
 fig_rating_sentiment.add_trace(go.Scatter(x=genre_list, y=pos_score_ratings,
 					name = 'Positive sentiment', yaxis='y', mode="markers+lines",
 					marker_symbol='circle', marker_line_color="midnightblue", marker_line_width=MARKERLINEWIDTH, marker_size=MARKERSIZE,
+					hoverlabel=dict(bgcolor= "#3fa4e6", font=dict(color='white')),
 					hovertemplate="<br>".join([
                         "Genre: %{x}",
                         "IMDB Rating: %{y}",
@@ -211,6 +212,7 @@ fig_rating_sentiment.add_trace(go.Scatter(x=genre_list, y=pos_score_ratings,
 fig_rating_sentiment.add_trace(go.Scatter(x=genre_list, y=neg_score_ratings,
 					name = 'Negative sentiment', yaxis='y', mode="markers+lines",
 					marker_symbol='circle', marker_line_color="midnightblue", marker_line_width=MARKERLINEWIDTH, marker_size=MARKERSIZE,
+					hoverlabel=dict(bgcolor= "#ff75b0", font=dict(color='white')),
 					hovertemplate="<br>".join([
                         "Genre: %{x}",
                         "IMDB Rating: %{y}",
@@ -241,7 +243,11 @@ fig_rating_sentiment.update_layout(
 	legend=dict(yanchor="top", y=1.14, xanchor="right", x=0.97, orientation="h",
 	bgcolor="white", bordercolor="Black", borderwidth=1)
 )
-
+fig_rating_sentiment.update_layout(
+    hoverlabel=dict(
+        font_size=FONTSIZE+0.5,
+    )
+)
 # line colors
 fig_rating_sentiment.data[0].line.color = "#3fa4e6"
 fig_rating_sentiment.data[1].line.color = "#ff75b0"
@@ -253,6 +259,7 @@ fig_votes_sentiment = go.Figure()
 fig_votes_sentiment.add_trace(go.Scatter(x=genre_list, y=pos_votes_ratings,
 					name = 'Positive sentiment', yaxis='y', mode="markers+lines",
 					marker_symbol='circle', marker_line_color="midnightblue", marker_line_width=MARKERLINEWIDTH, marker_size=MARKERSIZE,
+					hoverlabel=dict(bgcolor= "#3fa4e6", font=dict(color='white')),
 					hovertemplate="<br>".join([
                         "Genre: %{x}",
                         "Votes: %{y}",
@@ -262,6 +269,7 @@ fig_votes_sentiment.add_trace(go.Scatter(x=genre_list, y=pos_votes_ratings,
 fig_votes_sentiment.add_trace(go.Scatter(x=genre_list, y=neg_votes_ratings,
 					name = 'Negative sentiment', yaxis='y', mode="markers+lines",
 					marker_symbol='circle', marker_line_color="midnightblue", marker_line_width=MARKERLINEWIDTH, marker_size=MARKERSIZE,
+					hoverlabel=dict(bgcolor= "#ff75b0", font=dict(color='white')),
 					hovertemplate="<br>".join([
                         "Genre: %{x}",
                         "Votes: %{y}",
@@ -292,7 +300,11 @@ fig_votes_sentiment.update_layout(
 	legend=dict(yanchor="top", y=1.14, xanchor="right", x=0.97, orientation="h",
 	bgcolor="white", bordercolor="Black", borderwidth=1)
 )
-
+fig_votes_sentiment.update_layout(
+    hoverlabel=dict(
+        font_size=FONTSIZE+0.5,
+    )
+)
 # line colors
 fig_votes_sentiment.data[0].line.color = "#3fa4e6"
 fig_votes_sentiment.data[1].line.color = "#ff75b0"
@@ -304,6 +316,7 @@ fig_sentiment_year = go.Figure()
 fig_sentiment_year.add_trace(go.Scatter(x=mean_score_year.index, y=mean_score_year,
 					name = 'Mean sentiment', yaxis='y', mode="markers+lines",
 					marker_symbol='circle', marker_line_color="midnightblue", marker_line_width=MARKERLINEWIDTH, marker_size=MARKERSIZE,
+					hoverlabel=dict(bgcolor= "#3fa4e6", font=dict(color='white')),
 					hovertemplate="<br>".join([
                         "Year: %{x}",
                         "Mean sentiment: %{y}",
@@ -333,7 +346,11 @@ fig_sentiment_year.update_layout(
 	legend=dict(yanchor="top", y=1.27, xanchor="right", x=0.9, orientation="h",
 	bgcolor="white", bordercolor="Black", borderwidth=1)
 )
-
+fig_sentiment_year.update_layout(
+    hoverlabel=dict(
+        font_size=FONTSIZE+0.5,
+    )
+)
 # line colors
 fig_sentiment_year.data[0].line.color = "#3fa4e6"
 
@@ -357,6 +374,8 @@ fig_sentiment_genre_count.update_layout(
     yaxis=dict(
 		title='Number of Films',
         showgrid=True,
+		titlefont=dict(size=FONTSIZE),
+		tickfont=dict(size=FONTSIZE),
        	range=[0, 7050]
     ),
 	font=dict(
@@ -377,6 +396,11 @@ fig_sentiment_genre_count.update_layout(
 )
 fig_sentiment_genre_count.update_xaxes(tickangle=65)
 #fig_sentiment_genre_count.layout.font.family = 'Arial'
+fig_sentiment_genre_count.update_layout(
+    hoverlabel=dict(
+        font_size=FONTSIZE+0.5,
+    )
+)
 
 st.plotly_chart(fig_rating_sentiment)
 st.plotly_chart(fig_votes_sentiment)
