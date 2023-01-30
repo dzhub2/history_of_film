@@ -41,11 +41,18 @@ There are a total of 1128 tags, each with a relevance score labeling ~12.000 fil
 def st_load_genome_data():
     return load_genome_data()
 
+# Load film data
+@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+def st_load_movie_filtered_director():
+    return load_movie_filtered_director()
+#movies = st_load_movie_filtered_director()
+
 @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
 def st_load_pure_tags_split(k):
     return load_pure_tags_split(k)
 
-genome = st_load_genome_data()  # this is filtered to relevance >= 0.5
+#genome = st_load_genome_data()  # this is filtered to relevance >= 0.5
+genome = load_movie_filtered_director()  # this is filtered to relevance >= 0.5
 #pure_tags = st_load_pure_tags_split()  # this is unfiltered
 
 tag_list_total = genome['tag'].unique()
