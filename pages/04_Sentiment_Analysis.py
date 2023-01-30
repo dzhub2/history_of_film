@@ -8,7 +8,7 @@ from plotly.subplots import make_subplots
 import os
 import sys
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
-from  plotting_functions import *
+from streamlit_functions import *
 
 ### Define page-wide parameters
 BGCOLOR = 'lightskyblue'

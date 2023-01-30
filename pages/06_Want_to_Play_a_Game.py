@@ -1,6 +1,6 @@
 # Imports
 import streamlit as st
-from  plotting_functions import *
+from  streamlit_functions import *
 import base64
 import numpy as np
 

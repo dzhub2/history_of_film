@@ -1,6 +1,6 @@
 # Imports
 import streamlit as st
-from  plotting_functions import *
+from  streamlit_functions import *
 from matplotlib import pyplot as plt
 import seaborn as sns
 sns.set()
