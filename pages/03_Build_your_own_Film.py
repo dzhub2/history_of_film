@@ -41,13 +41,13 @@ There are a total of 1128 tags, each with a relevance score labeling ~12.000 fil
 def st_load_genome_data():
     return load_genome_data()
 
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
-def st_load_pure_tags_split():
-    return load_pure_tags_split()
+# @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+# def st_load_pure_tags_split(k):
+#     return load_pure_tags_split(k)
 
 genome = st_load_genome_data()  # this is filtered to relevance >= 0.5
-pure_tags = st_load_pure_tags_split()  # this is unfiltered
-pure_tags
+#pure_tags = st_load_pure_tags_split()  # this is unfiltered
+
 tag_list_total = genome['tag'].unique()
 tag_list_user = st.multiselect(label='Choose which tags you want to be contained in the film:',
 						options=tag_list_total,
@@ -56,7 +56,12 @@ tag_list_user = st.multiselect(label='Choose which tags you want to be contained
 )
 
 # calculate total relevance combining all user-input tags
-user_subset_tags = pure_tags[pure_tags['tag'].isin(tag_list_user)]
+user_subset_tags = pd.DataFrame()
+for k in range(5):
+    pure_tags = st_load_pure_tags_split(k)
+    tmp = pure_tags[pure_tags['tag'].isin(tag_list_user)]
+    user_subset_tags = pd.concat([user_subset_tags, tmp], axis=0)
+
 user_subset_tags = user_subset_tags[['relevance','imdbId']].groupby('imdbId').mean().sort_values(by='relevance', ascending=False) #imdb id is index now
 user_subset_tags = user_subset_tags.rename(columns={'relevance':'meanRelevance'})
 # pick top 50 suggestions

@@ -41,14 +41,11 @@ def load_pure_tags():
     genome_pure_tags = pd.read_csv("./output/genome_pure_tags.csv")
     return genome_pure_tags
 
-def load_pure_tags_split():
+def load_pure_tags_split(k):
     """Load movie lens genome data without any prior filtering on the relevance of the tags.
-    This function loads from the previously split csv files """
+    This function loads from the previously split csv files."""
 
-    genome_pure_tags = pd.DataFrame()
-    for k in range(5):
-        tmp = pd.read_csv(f"./output/genome_pure_tags_{k}.csv")
-        genome_pure_tags = pd.concat([genome_pure_tags, tmp], axis=0)
+    genome_pure_tags = pd.read_csv(f"./output/genome_pure_tags_{k}.csv")
 
     return genome_pure_tags
 
