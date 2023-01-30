@@ -27,7 +27,7 @@ _, col2, _ = st.columns([0.1, 0.9, 0.1])
 with col2:
     st.title(":male-scientist: Learning how to Film :male-scientist:")
 
-_, col2, _ = st.columns([0.1, 0.2, 0.1])
+_, col2, _ = st.columns([0.05, 0.2, 0.1])
 with col2:
     st.video("https://www.youtube.com/watch?v=e9vrfEoc8_g")
 
