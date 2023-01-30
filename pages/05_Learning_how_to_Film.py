@@ -71,7 +71,6 @@ plt.rcParams['ytick.left'] = True
 # draw histogram of importances of each feature
 # Return
 thresh = 0.05
-importances_return['Feature'] = importances_return['Feature'].replace({'budget': 'Budget', 'numVotes': 'Nr. of Votes'})
 
 importances_return = importances_return[importances_return['Importance']>=thresh]
 importances_return.sort_values(by='Importance', inplace=True, ascending=False)
@@ -83,7 +82,6 @@ ax.spines['left'].set_color('black')
 ax.spines['bottom'].set_color('black')
 
 # Rating
-importances_rating['Feature'] = importances_rating['Feature'].replace({'foreign_language': 'Is Foreign', 'numVotes': 'Nr. of Votes', 'runtimeMinutes': 'Runtime [min]'})
 
 importances_rating = importances_rating[importances_rating['Importance']>=thresh]
 importances_rating.sort_values(by='Importance', inplace=True, ascending=False)
