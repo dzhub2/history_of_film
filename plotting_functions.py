@@ -2,7 +2,6 @@
 
 # imports
 import pandas as pd
-import streamlit as st
 import numpy as np
 from wordcloud import WordCloud, STOPWORDS
 import seaborn as sns
@@ -139,7 +138,6 @@ def wrangle_count_genre_year_bar(movies, nr_movies_per_year):
         genre_list.remove('Sport')
     except:
         pass
-
 
     # combine all genres per year, then count how often each genre is contained in the created string
     genres_per_year = movies.groupby('startYear')['genres'].apply(lambda row: ','.join(row))
