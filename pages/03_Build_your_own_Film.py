@@ -74,12 +74,12 @@ user_subset_tags = user_subset_tags[['relevance','imdbId']].groupby('imdbId').me
 user_subset_tags = user_subset_tags.rename(columns={'relevance':'meanRelevance'})
 # pick top 50 suggestions
 user_subset_tags = user_subset_tags.iloc[0:50]
-# find matching movies in extended dataset
+# find matching movies information
 user_tag_recommendations = genome[genome['imdbId'].isin(user_subset_tags.index)]
-# select the user chosen tags in extended dataset
-user_tag_recommendations = user_tag_recommendations[user_tag_recommendations['tag'].isin(tag_list_user)]
-# ignore tag repetition and get unqiue movies
-user_tag_recommendations = user_tag_recommendations.drop_duplicates(subset=['imdbId'])
+# # select the user chosen tags in extended dataset
+# user_tag_recommendations = user_tag_recommendations[user_tag_recommendations['tag'].isin(tag_list_user)]
+# # ignore tag repetition and get unqiue movies
+# user_tag_recommendations = user_tag_recommendations.drop_duplicates(subset=['imdbId'])
 # join the proper mean relevance
 user_tag_recommendations = user_tag_recommendations.join(user_subset_tags, on='imdbId')
 # extract important features
