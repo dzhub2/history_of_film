@@ -10,16 +10,16 @@ import seaborn as sns
 #     movies_cleaned_directors_filtered = pd.read_csv("../output/movies_cleaned_directors_filtered.csv")
 #     return movies_cleaned_directors_filtered
 
-def load_movie_data_from_genome():
-    "Load main genome DB and extract unique movies without tags"
+# def load_movie_data_from_genome():
+#     "Load main genome DB and extract unique movies without tags"
 
-    genome_imdb_ml_tmdb_cleaned_filtered = pd.read_csv("./output/genome_imdb_ml_tmdb_cleaned_filtered.csv")
-    # drop the genome data and extract pure movie data
-    movies = genome_imdb_ml_tmdb_cleaned_filtered.drop(columns=['relevance', 'tag'], axis=1)
-    movies = movies.drop_duplicates(subset=['primaryTitle'])
-    movies.reset_index(drop=True, inplace=True)
+#     genome_imdb_ml_tmdb_cleaned_filtered = pd.read_csv("./output/genome_imdb_ml_tmdb_cleaned_filtered.csv")
+#     # drop the genome data and extract pure movie data
+#     movies = genome_imdb_ml_tmdb_cleaned_filtered.drop(columns=['relevance', 'tag'], axis=1)
+#     movies = movies.drop_duplicates(subset=['primaryTitle'])
+#     movies.reset_index(drop=True, inplace=True)
 
-    return movies
+#     return movies
 
 def load_movie_filtered_director():
     "Load main genome DB, which has been cleaned, filtered and contains directors."
@@ -28,18 +28,18 @@ def load_movie_filtered_director():
     
     return movies_cleaned_directors_filtered
 
-def load_genome_data():
-    "Load main genome DB inlcuding tags + relevance for movies from the movie lense DB."
+# def load_genome_data():
+#     "Load main genome DB inlcuding tags + relevance for movies from the movie lense DB."
 
-    genome_imdb_ml_tmdb_cleaned_filtered = pd.read_csv("./output/genome_imdb_ml_tmdb_cleaned_filtered.csv")
-    #genome_imdb_ml_tmdb_cleaned_filtered.reset_index(drop=True, inplace=True)
-    return genome_imdb_ml_tmdb_cleaned_filtered
+#     genome_imdb_ml_tmdb_cleaned_filtered = pd.read_csv("./output/genome_imdb_ml_tmdb_cleaned_filtered.csv")
+#     #genome_imdb_ml_tmdb_cleaned_filtered.reset_index(drop=True, inplace=True)
+#     return genome_imdb_ml_tmdb_cleaned_filtered
 
-def load_pure_tags():
-    "Load movie lens genome data without any prior filtering on the relevance of the tags."""
+# def load_pure_tags():
+#     "Load movie lens genome data without any prior filtering on the relevance of the tags."""
 
-    genome_pure_tags = pd.read_csv("./output/genome_pure_tags.csv")
-    return genome_pure_tags
+#     genome_pure_tags = pd.read_csv("./output/genome_pure_tags.csv")
+#     return genome_pure_tags
 
 def load_pure_tags_split(k):
     """Load movie lens genome data without any prior filtering on the relevance of the tags.
