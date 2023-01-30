@@ -36,24 +36,16 @@ There are a total of 1128 tags, each with a relevance score labeling ~12.000 fil
     \"The tag genome was computed using a machine learning algorithm on user-contributed content including tags, ratings, and textual reviews.\" \
     Detailed information on the implementation can be found inside their [publication](https://dl.acm.org/doi/10.1145/2362394.2362395).")
 
-
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
-def st_load_genome_data():
-    return load_genome_data()
-
 # Load film data
 @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
 def st_load_movie_filtered_director():
     return load_movie_filtered_director()
-#movies = st_load_movie_filtered_director()
+movies = st_load_movie_filtered_director()
 
 @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
 def st_load_pure_tags_split(k):
     return load_pure_tags_split(k)
 
-#genome = st_load_genome_data()  # this is filtered to relevance >= 0.5
-genome = load_movie_filtered_director()  # this is filtered to relevance >= 0.5
-#pure_tags = st_load_pure_tags_split()  # this is unfiltered
 
 pure_tags = st_load_pure_tags_split(0)
 tag_list_total = pure_tags['tag'].unique()
@@ -64,6 +56,7 @@ tag_list_user = st.multiselect(label='Choose which tags you want to be contained
 )
 
 # calculate total relevance combining all user-input tags
+# due to memory issues, load the split csv file one by one
 user_subset_tags = pd.DataFrame()
 for k in range(5):
     pure_tags = st_load_pure_tags_split(k)
@@ -75,7 +68,7 @@ user_subset_tags = user_subset_tags.rename(columns={'relevance':'meanRelevance'}
 # pick top 50 suggestions
 user_subset_tags = user_subset_tags.iloc[0:50]
 # find matching movies information
-user_tag_recommendations = genome[genome['imdbId'].isin(user_subset_tags.index)]
+user_tag_recommendations = movies[movies['imdbId'].isin(user_subset_tags.index)]
 # # select the user chosen tags in extended dataset
 # user_tag_recommendations = user_tag_recommendations[user_tag_recommendations['tag'].isin(tag_list_user)]
 # # ignore tag repetition and get unqiue movies
