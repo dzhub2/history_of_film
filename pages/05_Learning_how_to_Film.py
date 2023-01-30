@@ -23,13 +23,13 @@ def st_load_regression_result():
 importances_return, importances_rating = st_load_regression_result()
 
 ### Start the Page
-_, col2, _ = st.columns([0.1, 1, 0.1])
+_, col2, _ = st.columns([0.1, 0.9, 0.1])
 with col2:
     st.title(":male-scientist: Learning how to Film :male-scientist:")
 
 _, col2, _ = st.columns([0.1, 0.2, 0.1])
 with col2:
-    st.video("https://www.youtube.com/watch?v=bBixD-rTB_c")
+    st.video("https://www.youtube.com/watch?v=e9vrfEoc8_g")
 
 st.subheader("**Can Machine Learning be used to design the perfect film?**")
 st.write("On this page, we attempt to find the most relevant features to produce a film with \
