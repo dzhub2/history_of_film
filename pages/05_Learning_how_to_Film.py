@@ -32,8 +32,8 @@ with col2:
     st.video("https://www.youtube.com/watch?v=e9vrfEoc8_g")
 
 st.subheader("**Can Machine Learning be used to design the perfect film?**")
-st.write("On this page, we attempt to find the most relevant features to produce a film with \
-**maximum return** and **maximum IMDB rating**. To this end, **two regression models** were trained.\
+st.write("On this page, we attempt to find the most relevant features to optimize a film's \
+**return** and **IMDB rating**. To this end, **two regression models** were trained.\
  Details on the implementation can be found in [this notebook](https://github.com/dzhub2/history_of_film/blob/main/ml_predict_rating_regression.ipynb). \
 ")
 
@@ -98,7 +98,7 @@ ax.spines['bottom'].set_linewidth(1)
 ax.spines['left'].set_color('black')
 ax.spines['bottom'].set_color('black')
 
-st.header("Maximize Return on Investment")
+st.header("Return on Investment Feature Importance")
 st.pyplot(plot_return)
-st.header("Maximize IMDB Rating")
+st.header("IMDB Rating Feature Importance")
 st.pyplot(plot_rating)
