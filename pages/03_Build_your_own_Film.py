@@ -47,7 +47,7 @@ def st_load_pure_tags_split():
 
 genome = st_load_genome_data()  # this is filtered to relevance >= 0.5
 pure_tags = st_load_pure_tags_split()  # this is unfiltered
-
+pure_tags
 tag_list_total = genome['tag'].unique()
 tag_list_user = st.multiselect(label='Choose which tags you want to be contained in the film:',
 						options=tag_list_total,
