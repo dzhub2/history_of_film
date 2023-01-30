@@ -23,7 +23,7 @@ def st_load_regression_result():
 importances_return, importances_rating = st_load_regression_result()
 
 ### Start the Page
-_, col2, _ = st.columns([0.1, 0.9, 0.1])
+_, col2, _ = st.columns([0.1, 0.7, 0.1])
 with col2:
     st.title(":male-scientist: Learning how to Film :male-scientist:")
 

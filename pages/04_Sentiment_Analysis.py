@@ -236,7 +236,7 @@ fig_rating_sentiment.update_layout(
 	title_text="Mean IMDB Rating per Genre: Positive vs. Negative Sentiment",#	width=800
 	hovermode="x", # or just x
 	plot_bgcolor = 'rgba(0, 0, 0, 0)',
-	legend=dict(yanchor="top", y=1.14, xanchor="right", x=0.95, orientation="h",
+	legend=dict(yanchor="top", y=1.14, xanchor="right", x=0.97, orientation="h",
 	bgcolor="white", bordercolor="Black", borderwidth=1)
 )
 
@@ -285,7 +285,7 @@ fig_votes_sentiment.update_layout(
 	title_text="Mean IMDB Votes per Genre: Positive vs. Negative Sentiment",#	width=800
 	hovermode="x", # or just x
 	plot_bgcolor = 'rgba(0, 0, 0, 0)',
-	legend=dict(yanchor="top", y=1.14, xanchor="right", x=0.95, orientation="h",
+	legend=dict(yanchor="top", y=1.14, xanchor="right", x=0.97, orientation="h",
 	bgcolor="white", bordercolor="Black", borderwidth=1)
 )
 
