@@ -76,6 +76,11 @@ def load_regression_result():
     importances_return['Feature'] = importances_return['Feature'].replace({'budget': 'Budget', 'numVotes': 'Nr. of Votes'})
     importances_rating['Feature'] = importances_rating['Feature'].replace({'foreign_language': 'Is Foreign', 'numVotes': 'Nr. of Votes', 'runtimeMinutes': 'Runtime [min]'})
 
+    # limit to most important features
+    thresh = 0.05
+    importances_return = importances_return[importances_return['Importance']>=thresh]
+    importances_rating = importances_rating[importances_rating['Importance']>=thresh]
+
     return importances_return, importances_rating
 
 def wrangle_highest_rated_movies_lineplot(movies):

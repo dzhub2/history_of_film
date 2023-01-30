@@ -22,7 +22,6 @@ def st_load_regression_result():
 
 importances_return, importances_rating = st_load_regression_result()
 
-
 ### Start the Page
 _, col2, _ = st.columns([0.1, 0.9, 0.1])
 with col2:
@@ -70,9 +69,7 @@ plt.rcParams['ytick.left'] = True
 
 # draw histogram of importances of each feature
 # Return
-thresh = 0.05
 
-importances_return = importances_return[importances_return['Importance']>=thresh]
 importances_return.sort_values(by='Importance', inplace=True, ascending=False)
 plot_return = plt.figure(figsize=(8, 5))
 ax = sns.barplot(x='Feature', y='Importance', data=importances_return, edgecolor = "black", palette='magma')
@@ -83,7 +80,6 @@ ax.spines['bottom'].set_color('black')
 
 # Rating
 
-importances_rating = importances_rating[importances_rating['Importance']>=thresh]
 importances_rating.sort_values(by='Importance', inplace=True, ascending=False)
 plot_rating = plt.figure(figsize=(8, 5))
 ax = sns.barplot(x='Feature', y='Importance', data=importances_rating, edgecolor = "black", palette='magma')
