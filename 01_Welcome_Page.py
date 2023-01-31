@@ -92,9 +92,7 @@ def st_create_wordcloud(movies):
     return create_wordcloud(movies)
 title_wordcloud = st_create_wordcloud(movies)
 
-
-fig, ax = plt.subplots()
 plt.imshow(title_wordcloud)
 plt.axis('off')
 plt.show()
-st.pyplot(fig)
+st.pyplot()
