@@ -34,7 +34,7 @@ with col2:
 st.header("Film Keyword Sentiment Analysis")
 
 st.write("The Movie Database ([TMDB](https://www.themoviedb.org/)) offers several keywords associated with \
-the plot and general themes of a film. Sentiment Analysis was performed on these keywords using \
+the plot and general themes of a film. Sentiment Analysis for ~12.000 films was performed on these keywords using \
 the NLP framework [flair](https://github.com/flairNLP/flair). This library is particularly well \
 suited as it was pre-trained on IMDB data.")
 # here, use dialogue kaggle data to perform sentiment analysis on
@@ -410,4 +410,58 @@ st.plotly_chart(fig_sentiment_year)
 st.plotly_chart(fig_sentiment_genre_count)
 
 
+st.header("Film Dialogue Sentiment Analysis")
+st.write("For comparison to the somewhat simplified keyword analysis above, the \
+[Cornell Movie--Dialogs Corpus](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html) \
+was also analysed. However, it contains only ~600 films.")
 
+@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+def st_load_dialogue_data_mean():
+    return load_dialogue_data_mean()
+
+title_corpus_and_mean = st_load_dialogue_data_mean()
+target = title_corpus_and_mean.groupby('year').mean()['sentiment_score']
+##################################################################################
+### Plot: Lineplot: Mean sentiment score by year
+fig_sentiment_year = go.Figure()
+# pos. sentiment rating
+fig_sentiment_year.add_trace(go.Scatter(x=target.index, y=target,
+					name = 'Mean sentiment', yaxis='y', mode="markers+lines",
+					marker_symbol='circle', marker_line_color="midnightblue", marker_line_width=MARKERLINEWIDTH, marker_size=MARKERSIZE,
+					hoverlabel=dict(bgcolor= "#3fa4e6", font=dict(color='white')),
+					hovertemplate="<br>".join([
+                        "Year: %{x}",
+                        "Mean sentiment: %{y}",
+						"<extra></extra>" # remove 2nd box
+                    ])))
+
+# Create axis objects
+fig_sentiment_year.update_layout(
+	font_family = FONTFAMILY,
+	font_size = FONTSIZE,
+	#create 1st y axis			
+	yaxis=dict(
+		title="Mean Sentiment Score",
+		titlefont=dict(color="#1f77b4", size=FONTSIZE),
+		tickfont=dict(color="#1f77b4", size=FONTSIZE),
+        showgrid=True,
+		range=[-0.61, 0.41]),
+	xaxis=dict(title="Year", titlefont=dict(size=FONTSIZE),
+		tickfont=dict(size=FONTSIZE))
+)
+fig_sentiment_year.update_xaxes(tickangle=65)
+
+fig_sentiment_year.update_layout(
+	title_text="Mean Sentiment Score by Year",#	width=800
+	hovermode="x", # or just x
+	plot_bgcolor = 'rgba(0, 0, 0, 0)',
+	legend=dict(yanchor="top", y=1.27, xanchor="right", x=0.9, orientation="h",
+	bgcolor="white", bordercolor="Black", borderwidth=1)
+)
+fig_sentiment_year.update_layout(
+    hoverlabel=dict(
+        font_size=FONTSIZE+0.5,
+    )
+)
+# line colors
+fig_sentiment_year.data[0].line.color = "#3fa4e6"

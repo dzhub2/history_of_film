@@ -63,10 +63,18 @@ def load_dialogue_data():
     return title_corpus
 
 def load_keyword_data():
-    """Load the dataframe containing info about movies, keywrods and sentiment analysis."""
+    """Load the dataframe containing info about movies, keyword and sentiment analysis."""
 
     genome_movies_sentiment = pd.read_csv("./output/genome_movies_sentiment.csv")
     return genome_movies_sentiment
+
+def load_dialogue_data_mean():
+    """Load the dataframe containing info about movies and their dialogue sentiment analysis.
+    THIS file contains both: the flair sentiment analysis applied to the entire corpus at once,
+    and alternatively, applied to each line seperately and then averaged over the film."""
+
+    title_corpus_and_mean = pd.read_csv("./output/title_corpus_and_mean.csv")
+    return title_corpus_and_mean
 
 def load_quotes():
     """Load movie quote data for guessing game."""
