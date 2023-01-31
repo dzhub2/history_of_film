@@ -66,7 +66,6 @@ plt.rcParams['xtick.bottom'] = True
 plt.rcParams['ytick.major.size'] = 4
 plt.rcParams['ytick.major.width'] = 1
 plt.rcParams['ytick.left'] = True
-#sns.set_context(rc = {'patch.linewidth': 50})
 
 # Rename and filter:
 importances_return['Feature'] = importances_return['Feature'].replace({'budget': 'Budget', 'numVotes': 'Nr. of Votes'})
@@ -92,7 +91,7 @@ ax.spines['bottom'].set_color('black')
 
 importances_rating.sort_values(by='Importance', inplace=True, ascending=False)
 plot_rating = plt.figure(figsize=(8, 5))
-ax = sns.barplot(x='Feature', y='Importance', data=importances_rating, edgecolor = "black", palette='magma')
+ax = sns.barplot(x='Feature', y='Importance', data=importances_rating, edgecolor = "black", linewidth=3, palette='magma')
 ax.spines['left'].set_linewidth(1)
 ax.spines['bottom'].set_linewidth(1)
 ax.spines['left'].set_color('black')
