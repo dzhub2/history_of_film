@@ -413,7 +413,8 @@ st.plotly_chart(fig_sentiment_genre_count)
 st.header("Film Dialogue Sentiment Analysis")
 st.write("For comparison to the keyword analysis above, the \
 [Cornell Movie--Dialogs Corpus](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html) \
-was also analysed. However, it contains only ~600 films.")
+was also analysed. However, it contains only ~600 films. For each line of dialogue, a sentiment was calculated. The total sentiment of a film \
+is then the mean over all lines.")
 
 @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
 def st_load_dialogue_data_mean():
@@ -445,7 +446,7 @@ fig_sentiment_year_dialogue.update_layout(
 		titlefont=dict(color="#1f77b4", size=FONTSIZE),
 		tickfont=dict(color="#1f77b4", size=FONTSIZE),
         showgrid=True,
-		range=[-0.22, 0.22]),
+		range=[-0.25, 0.25]),
 	xaxis=dict(title="Year", titlefont=dict(size=FONTSIZE),
 		tickfont=dict(size=FONTSIZE))
 )
