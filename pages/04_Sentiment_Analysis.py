@@ -421,6 +421,7 @@ def st_load_dialogue_data_mean():
 
 title_corpus_and_mean = st_load_dialogue_data_mean()
 target = title_corpus_and_mean.groupby('year').mean()['sentiment_score']
+target
 ##################################################################################
 ### Plot: Lineplot: Mean sentiment score by year
 fig_sentiment_year_dialogue = go.Figure()
