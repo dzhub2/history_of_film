@@ -81,7 +81,7 @@ importances_rating = importances_rating[importances_rating['Importance']>=thresh
 
 importances_return.sort_values(by='Importance', inplace=True, ascending=False)
 plot_return = plt.figure(figsize=(8, 5))
-ax = sns.barplot(x='Feature', y='Importance', data=importances_return, edgecolor = "black", palette='magma')
+ax = sns.barplot(x='Feature', y='Importance', data=importances_return, edgecolor = "black", linewidth=2, palette='magma')
 ax.spines['left'].set_linewidth(1)
 ax.spines['bottom'].set_linewidth(1)
 ax.spines['left'].set_color('black')
@@ -91,7 +91,7 @@ ax.spines['bottom'].set_color('black')
 
 importances_rating.sort_values(by='Importance', inplace=True, ascending=False)
 plot_rating = plt.figure(figsize=(8, 5))
-ax = sns.barplot(x='Feature', y='Importance', data=importances_rating, edgecolor = "black", linewidth=3, palette='magma')
+ax = sns.barplot(x='Feature', y='Importance', data=importances_rating, edgecolor = "black", linewidth=2, palette='magma')
 ax.spines['left'].set_linewidth(1)
 ax.spines['bottom'].set_linewidth(1)
 ax.spines['left'].set_color('black')
