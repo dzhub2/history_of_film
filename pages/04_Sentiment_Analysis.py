@@ -421,7 +421,6 @@ def st_load_dialogue_data_mean():
 
 title_corpus_and_mean = st_load_dialogue_data_mean()
 target = title_corpus_and_mean.groupby('year').mean()['sentiment_score']
-target
 ##################################################################################
 ### Plot: Lineplot: Mean sentiment score by year
 fig_sentiment_year_dialogue = go.Figure()
@@ -446,7 +445,7 @@ fig_sentiment_year_dialogue.update_layout(
 		titlefont=dict(color="#1f77b4", size=FONTSIZE),
 		tickfont=dict(color="#1f77b4", size=FONTSIZE),
         showgrid=True,
-		range=[-0.61, 0.41]),
+		range=[-0.2, 0.2]),
 	xaxis=dict(title="Year", titlefont=dict(size=FONTSIZE),
 		tickfont=dict(size=FONTSIZE))
 )
