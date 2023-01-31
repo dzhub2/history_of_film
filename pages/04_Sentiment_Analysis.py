@@ -31,6 +31,8 @@ _, col2, _ = st.columns([0.1, 0.25, 0.1])
 with col2:
     st.video("https://www.youtube.com/watch?v=FnpJBkAMk44")
 
+st.header("Film Keyword Sentiment Analysis")
+
 st.write("The Movie Database ([TMDB](https://www.themoviedb.org/)) offers several keywords associated with \
 the plot and general themes of a film. Sentiment Analysis was performed on these keywords using \
 the NLP framework [flair](https://github.com/flairNLP/flair). This library is particularly well \
@@ -187,7 +189,7 @@ def st_load_keyword_data():
     return load_keyword_data()
 
 genome_movies_sentiment = st_load_keyword_data()
-genome_movies_sentiment
+
 @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
 def st_keyword_genre_scores(genome_movies_sentiment):
     return keyword_genre_scores(genome_movies_sentiment)
