@@ -446,7 +446,7 @@ fig_sentiment_year_dialogue.update_layout(
 		titlefont=dict(color="#1f77b4", size=FONTSIZE),
 		tickfont=dict(color="#1f77b4", size=FONTSIZE),
         showgrid=True,
-		range=[-0.25, 0.25]),
+		range=[-0.3, 0.3]),
 	xaxis=dict(title="Year", titlefont=dict(size=FONTSIZE),
 		tickfont=dict(size=FONTSIZE))
 )
