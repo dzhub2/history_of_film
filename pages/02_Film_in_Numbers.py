@@ -38,7 +38,7 @@ with col2:
     st.video("https://www.youtube.com/watch?v=2-qrMz-JAzo")
 
 st.write("This page showcases the evolution of film throughout the years using different metrics like ratings, box office returns, etc. \
-The data is mostly based on the official [IMDB datasets](https://www.imdb.com/interfaces/), limited to the subset of films contained in the [MovieLens 25M dataset](https://grouplens.org/datasets/movielens/25m/). Information on budget and revenue was obtained from [TMDB](https://www.themoviedb.org/)")
+The data is mostly based on the official [IMDB datasets](https://www.imdb.com/interfaces/), limited to the subset of films contained in the [MovieLens 25M dataset](https://grouplens.org/datasets/movielens/25m/). Information on budget and revenue was obtained from [TMDB](https://www.themoviedb.org/).")
 
 st.write("**Note:** All graphics are **interactive**. You can hover the cursor, zoom in and select elements. (Double) click on elements in the legend to focus on the data you are most interested in!")
 ##################################################################################
