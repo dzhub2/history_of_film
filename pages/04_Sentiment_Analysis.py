@@ -411,7 +411,7 @@ st.plotly_chart(fig_sentiment_genre_count)
 
 
 st.header("Film Dialogue Sentiment Analysis")
-st.write("For comparison to the somewhat simplified keyword analysis above, the \
+st.write("For comparison to the keyword analysis above, the \
 [Cornell Movie--Dialogs Corpus](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html) \
 was also analysed. However, it contains only ~600 films.")
 
@@ -445,7 +445,7 @@ fig_sentiment_year_dialogue.update_layout(
 		titlefont=dict(color="#1f77b4", size=FONTSIZE),
 		tickfont=dict(color="#1f77b4", size=FONTSIZE),
         showgrid=True,
-		range=[-0.2, 0.2]),
+		range=[-0.22, 0.22]),
 	xaxis=dict(title="Year", titlefont=dict(size=FONTSIZE),
 		tickfont=dict(size=FONTSIZE))
 )
