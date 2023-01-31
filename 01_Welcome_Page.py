@@ -45,7 +45,7 @@ mid1, col1, mid2, col2 = st.columns([2,1,10,10])
 mymovie = movies.sample(1)
 with col1:
     imageLocation = st.empty()
-    imageLocation.image("https://image.tmdb.org/t/p/original" + str(mymovie['poster_path'].iloc[0]), width=230)
+    imageLocation.image("https://image.tmdb.org/t/p/original"+mymovie['poster_path'].iloc[0], width=230)
 with col2:
     st.write(f":movie_camera: **Title** : {mymovie['primaryTitle'].iloc[0]}")
     st.write(f":100: **IMDB Rating** : {mymovie['averageRating'].iloc[0]}")
