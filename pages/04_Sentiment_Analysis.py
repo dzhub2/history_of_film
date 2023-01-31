@@ -187,7 +187,7 @@ def st_load_keyword_data():
     return load_keyword_data()
 
 genome_movies_sentiment = st_load_keyword_data()
-
+genome_movies_sentiment
 @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
 def st_keyword_genre_scores(genome_movies_sentiment):
     return keyword_genre_scores(genome_movies_sentiment)
