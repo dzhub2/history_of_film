@@ -71,7 +71,7 @@ if len(mymovie) == 0:
 else:
     with col1:
         imageLocation = st.empty()
-        imageLocation.image("https://image.tmdb.org/t/p/original"+mymovie['poster_path'].iloc[0], width=230)
+        imageLocation.image("https://image.tmdb.org/t/p/original"+str(mymovie['poster_path'].iloc[0]), width=230)
     with col2:
         st.write(f":movie_camera: **Title** : {mymovie['primaryTitle'].iloc[0]}")
         st.write(f":100: **IMDB Rating** : {mymovie['averageRating'].iloc[0]}")
@@ -92,7 +92,9 @@ def st_create_wordcloud(movies):
     return create_wordcloud(movies)
 title_wordcloud = st_create_wordcloud(movies)
 
+
+fig, ax = plt.subplots()
 plt.imshow(title_wordcloud)
 plt.axis('off')
 plt.show()
-st.pyplot()
+st.pyplot(fig)
