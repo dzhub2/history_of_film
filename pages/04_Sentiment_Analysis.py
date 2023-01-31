@@ -423,9 +423,9 @@ title_corpus_and_mean = st_load_dialogue_data_mean()
 target = title_corpus_and_mean.groupby('year').mean()['sentiment_score']
 ##################################################################################
 ### Plot: Lineplot: Mean sentiment score by year
-fig_sentiment_year = go.Figure()
+fig_sentiment_year_dialogue = go.Figure()
 # pos. sentiment rating
-fig_sentiment_year.add_trace(go.Scatter(x=target.index, y=target,
+fig_sentiment_year_dialogue.add_trace(go.Scatter(x=target.index, y=target,
 					name = 'Mean sentiment', yaxis='y', mode="markers+lines",
 					marker_symbol='circle', marker_line_color="midnightblue", marker_line_width=MARKERLINEWIDTH, marker_size=MARKERSIZE,
 					hoverlabel=dict(bgcolor= "#3fa4e6", font=dict(color='white')),
@@ -436,7 +436,7 @@ fig_sentiment_year.add_trace(go.Scatter(x=target.index, y=target,
                     ])))
 
 # Create axis objects
-fig_sentiment_year.update_layout(
+fig_sentiment_year_dialogue.update_layout(
 	font_family = FONTFAMILY,
 	font_size = FONTSIZE,
 	#create 1st y axis			
@@ -449,19 +449,21 @@ fig_sentiment_year.update_layout(
 	xaxis=dict(title="Year", titlefont=dict(size=FONTSIZE),
 		tickfont=dict(size=FONTSIZE))
 )
-fig_sentiment_year.update_xaxes(tickangle=65)
+fig_sentiment_year_dialogue.update_xaxes(tickangle=65)
 
-fig_sentiment_year.update_layout(
+fig_sentiment_year_dialogue.update_layout(
 	title_text="Mean Sentiment Score by Year",#	width=800
 	hovermode="x", # or just x
 	plot_bgcolor = 'rgba(0, 0, 0, 0)',
 	legend=dict(yanchor="top", y=1.27, xanchor="right", x=0.9, orientation="h",
 	bgcolor="white", bordercolor="Black", borderwidth=1)
 )
-fig_sentiment_year.update_layout(
+fig_sentiment_year_dialogue.update_layout(
     hoverlabel=dict(
         font_size=FONTSIZE+0.5,
     )
 )
 # line colors
-fig_sentiment_year.data[0].line.color = "#3fa4e6"
+fig_sentiment_year_dialogue.data[0].line.color = "#3fa4e6"
+
+st.plotly_chart(fig_sentiment_year_dialogue)
