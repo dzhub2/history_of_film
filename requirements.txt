@@ -1,7 +1,7 @@
-streamlit
-pandas
-numpy
-plotly
-matplotlib
-seaborn
-wordcloud
+streamlit>=1.45
+pandas>=2.2
+numpy>=2.0
+plotly>=6.0
+matplotlib>=3.10
+seaborn>=0.13
+wordcloud>=1.9

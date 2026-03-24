@@ -37,12 +37,12 @@ There are a total of 1128 tags, each with a relevance score labeling ~12.000 fil
     Detailed information on the implementation can be found inside their [publication](https://dl.acm.org/doi/10.1145/2362394.2362395).")
 
 # Load film data
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_load_movie_filtered_director():
     return load_movie_filtered_director()
 movies = st_load_movie_filtered_director()
 
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_load_pure_tags_split(k):
     return load_pure_tags_split(k)
 

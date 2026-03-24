@@ -39,13 +39,13 @@ the NLP framework [flair](https://github.com/flairNLP/flair). This library is pa
 suited as it was pre-trained on IMDB data.")
 # here, use dialogue kaggle data to perform sentiment analysis on
 
-# @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+# @st.cache_data
 # def st_load_dialogue_data():
 #     return load_dialogue_data()
 
 # title_corpus = st_load_dialogue_data()
 
-# @st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+# @st.cache_data
 # def st_dialogue_genre_scores(title_corpus):
 #     return dialogue_genre_scores(title_corpus)
 
@@ -184,13 +184,13 @@ suited as it was pre-trained on IMDB data.")
 #########################################################################
 #########################################################################
 #########################################################################
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_load_keyword_data():
     return load_keyword_data()
 
 genome_movies_sentiment = st_load_keyword_data()
 
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_keyword_genre_scores(genome_movies_sentiment):
     return keyword_genre_scores(genome_movies_sentiment)
 
@@ -416,12 +416,12 @@ st.write("For comparison to the keyword analysis above, the \
 was also analysed. However, it contains only ~600 films. For each line of dialogue, a sentiment was calculated. The total sentiment of a film \
 is then the mean over all lines.")
 
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_load_dialogue_data_mean():
     return load_dialogue_data_mean()
 
 title_corpus_and_mean = st_load_dialogue_data_mean()
-target = title_corpus_and_mean.groupby('year').mean()['sentiment_score']
+target = title_corpus_and_mean.groupby('year')['sentiment_score'].mean()
 ##################################################################################
 ### Plot: Lineplot: Mean sentiment score by year
 fig_sentiment_year_dialogue = go.Figure()

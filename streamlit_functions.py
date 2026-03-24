@@ -97,17 +97,17 @@ def wrangle_highest_rated_movies_lineplot(movies):
     max_rating_year = movies[['averageRating','numVotes', 'startYear','primaryTitle','imdbId']].sort_values(by='averageRating', ascending=False).drop_duplicates(['startYear']).sort_values(by='startYear')
     max_votes_year = movies[['averageRating','numVotes', 'startYear','primaryTitle','imdbId']].sort_values(by='numVotes', ascending=False).drop_duplicates(['startYear']).sort_values(by='startYear')
     nr_movies_per_year = movies[['averageRating', 'startYear']].groupby('startYear').count().rename(columns={'averageRating':'numMovies'})
-    total_ratings_per_year = movies[['numVotes', 'startYear']].groupby('startYear').sum().rename(columns={'numVotes':'numVotesYear'})
+    total_ratings_per_year = movies[['numVotes', 'startYear']].groupby('startYear').sum(numeric_only=True).rename(columns={'numVotes':'numVotesYear'})
     norm_votes_per_year = pd.DataFrame((total_ratings_per_year['numVotesYear']/nr_movies_per_year['numMovies']).round().astype('int32')).rename(columns={0:'averageNrRatings'})
-    avg_rating_per_year = movies[['averageRating', 'startYear']].groupby('startYear').mean().rename(columns={'averageRating':'meanAverageRating'})
+    avg_rating_per_year = movies[['averageRating', 'startYear']].groupby('startYear').mean(numeric_only=True).rename(columns={'averageRating':'meanAverageRating'})
 
     return max_rating_year, nr_movies_per_year, total_ratings_per_year, norm_votes_per_year, avg_rating_per_year, max_votes_year
 
 def wrangle_budget_revenue_movies_lineplot(movies):
     """Extract financial features for budget, revenue by year for line plot"""
 
-    mean_budget_year = movies.groupby('startYear').mean()['budget']
-    mean_revenue_year = movies.groupby('startYear').mean()['revenue']
+    mean_budget_year = movies.groupby('startYear')['budget'].mean()
+    mean_revenue_year = movies.groupby('startYear')['revenue'].mean()
     max_revenue_year = movies.sort_values(by='revenue', ascending=False).drop_duplicates(['startYear']).sort_values(by='startYear')
     max_budget_year = movies.sort_values(by='budget', ascending=False).drop_duplicates(['startYear']).sort_values(by='startYear')
 
@@ -191,27 +191,27 @@ def wrangle_rating_genre_year(movies):
     max_nr_genres = len(genre_df.columns) # counts maximum number of genres listed per movie
 
     # do the appending after we extracted all individual genres as column
-    genre_df[0].rename('myGenre', inplace=True)
-    movies_genre_unfolded = pd.concat([df, genre_df[0]], axis = 1) # append genre as a column
+    col = genre_df[0].rename('myGenre')
+    movies_genre_unfolded = pd.concat([df, col], axis=1)
 
     for k in range(1, max_nr_genres):
-        genre_df[k].rename('myGenre', inplace=True)
-        tmp = pd.concat([df, genre_df[k]], axis = 1) # append k'th genre as a column
-        movies_genre_unfolded = pd.concat([movies_genre_unfolded, tmp], axis = 0) # append above dataframe at bottom of total frame
-    movies_genre_unfolded.reset_index(drop=True, inplace=True)
+        col = genre_df[k].rename('myGenre')
+        tmp = pd.concat([df, col], axis=1)
+        movies_genre_unfolded = pd.concat([movies_genre_unfolded, tmp], axis=0)
+    movies_genre_unfolded = movies_genre_unfolded.reset_index(drop=True)
     # clean
-    movies_genre_unfolded.drop('genres', inplace=True, axis=1, errors='ignore')
-    movies_genre_unfolded['myGenre'].fillna(value='no genre', inplace=True)
+    movies_genre_unfolded = movies_genre_unfolded.drop('genres', axis=1, errors='ignore')
+    movies_genre_unfolded['myGenre'] = movies_genre_unfolded['myGenre'].fillna(value='no genre')
     # calculate the mean rating and clean
-    mean_rating_genre_year = movies_genre_unfolded.groupby(by=['startYear','myGenre'])['averageRating'].mean().rename('meanRating', inplace=True)
+    mean_rating_genre_year = movies_genre_unfolded.groupby(by=['startYear','myGenre'])['averageRating'].mean().rename('meanRating')
     mean_rating_genre_year = pd.DataFrame(mean_rating_genre_year)
-    mean_rating_genre_year.reset_index(inplace=True)
+    mean_rating_genre_year = mean_rating_genre_year.reset_index()
     mean_rating_genre_year = mean_rating_genre_year[mean_rating_genre_year['myGenre']!='no genre'] # drop no genre rows
     mean_rating_genre_year['meanRating'] = mean_rating_genre_year['meanRating'].round(2)
     # calculate the count of movies per genre per year
-    count_genre_year = movies_genre_unfolded.groupby(by=['startYear','myGenre'])['primaryTitle'].count().rename('count', inplace=True)
+    count_genre_year = movies_genre_unfolded.groupby(by=['startYear','myGenre'])['primaryTitle'].count().rename('count')
     count_genre_year = pd.DataFrame(count_genre_year)
-    count_genre_year.reset_index(inplace=True)
+    count_genre_year = count_genre_year.reset_index()
     count_genre_year = count_genre_year[count_genre_year['myGenre']!='no genre'] # drop no genre rows
 
     return mean_rating_genre_year
@@ -226,21 +226,21 @@ def wrangle_runtime_genre_year(movies):
     max_nr_genres = len(genre_df.columns) # counts maximum number of genres listed per movie
 
     # do the appending after we extracted all individual genres as column
-    genre_df[0].rename('myGenre', inplace=True)
-    movies_genre_unfolded = pd.concat([df, genre_df[0]], axis = 1) # append genre as a column
+    col = genre_df[0].rename('myGenre')
+    movies_genre_unfolded = pd.concat([df, col], axis=1)
 
     for k in range(1, max_nr_genres):
-        genre_df[k].rename('myGenre', inplace=True)
-        tmp = pd.concat([df, genre_df[k]], axis = 1) # append k'th genre as a column
-        movies_genre_unfolded = pd.concat([movies_genre_unfolded, tmp], axis = 0) # append above dataframe at bottom of total frame
-    movies_genre_unfolded.reset_index(drop=True, inplace=True)
+        col = genre_df[k].rename('myGenre')
+        tmp = pd.concat([df, col], axis=1)
+        movies_genre_unfolded = pd.concat([movies_genre_unfolded, tmp], axis=0)
+    movies_genre_unfolded = movies_genre_unfolded.reset_index(drop=True)
     # clean
-    movies_genre_unfolded.drop('genres', inplace=True, axis=1, errors='ignore')
-    movies_genre_unfolded['myGenre'].fillna(value='no genre', inplace=True)
+    movies_genre_unfolded = movies_genre_unfolded.drop('genres', axis=1, errors='ignore')
+    movies_genre_unfolded['myGenre'] = movies_genre_unfolded['myGenre'].fillna(value='no genre')
     # calculate the mean runtime and clean
-    mean_runtime_genre_year = movies_genre_unfolded.groupby(by=['startYear','myGenre'])['runtimeMinutes'].mean().rename('meanRuntime', inplace=True)
+    mean_runtime_genre_year = movies_genre_unfolded.groupby(by=['startYear','myGenre'])['runtimeMinutes'].mean().rename('meanRuntime')
     mean_runtime_genre_year = pd.DataFrame(mean_runtime_genre_year)
-    mean_runtime_genre_year.reset_index(inplace=True)
+    mean_runtime_genre_year = mean_runtime_genre_year.reset_index()
     mean_runtime_genre_year = mean_runtime_genre_year[mean_runtime_genre_year['myGenre']!='no genre'] # drop no genre rows
     mean_runtime_genre_year['meanRuntime'] = mean_runtime_genre_year['meanRuntime'].round(2)
 
@@ -256,22 +256,21 @@ def wrangle_revenue_genre_year(movies):
     max_nr_genres = len(genre_df.columns) # counts maximum number of genres listed per movie
 
     # do the appending after we extracted all individual genres as column
-    genre_df[0].rename('myGenre', inplace=True)
-    movies_genre_unfolded = pd.concat([df, genre_df[0]], axis = 1) # append genre as a column
+    col = genre_df[0].rename('myGenre')
+    movies_genre_unfolded = pd.concat([df, col], axis=1)
 
     for k in range(1, max_nr_genres):
-        genre_df[k].rename('myGenre', inplace=True)
-        tmp = pd.concat([df, genre_df[k]], axis = 1) # append k'th genre as a column
-        movies_genre_unfolded = pd.concat([movies_genre_unfolded, tmp], axis = 0) # append above dataframe at bottom of total frame
-    movies_genre_unfolded.reset_index(drop=True, inplace=True)
+        col = genre_df[k].rename('myGenre')
+        tmp = pd.concat([df, col], axis=1)
+        movies_genre_unfolded = pd.concat([movies_genre_unfolded, tmp], axis=0)
+    movies_genre_unfolded = movies_genre_unfolded.reset_index(drop=True)
     # clean
-    movies_genre_unfolded.drop('genres', inplace=True, axis=1, errors='ignore')
-    movies_genre_unfolded['myGenre'].fillna(value='no genre', inplace=True)
+    movies_genre_unfolded = movies_genre_unfolded.drop('genres', axis=1, errors='ignore')
+    movies_genre_unfolded['myGenre'] = movies_genre_unfolded['myGenre'].fillna(value='no genre')
     # calculate the mean revenue and clean
-    mean_revenue_genre_year = movies_genre_unfolded.groupby(by=['startYear','myGenre'])['revenue'].mean().rename('meanRevenue', inplace=True)
+    mean_revenue_genre_year = movies_genre_unfolded.groupby(by=['startYear','myGenre'])['revenue'].mean().rename('meanRevenue')
     mean_revenue_genre_year = pd.DataFrame(mean_revenue_genre_year)
-    #mean_revenue_genre_year = mean_revenue_genre_year[mean_revenue_genre_year['myGenre']!='no genre'] # drop no genre rows
-    mean_revenue_genre_year.reset_index(inplace=True)
+    mean_revenue_genre_year = mean_revenue_genre_year.reset_index()
     mean_revenue_genre_year = mean_revenue_genre_year.fillna(0)
 
     return mean_revenue_genre_year
@@ -288,7 +287,7 @@ def create_wordcloud(movies):
 def return_by_year(movies):
     # add a feature for monetary return
     df_return = movies.copy()
-    df_return = df_return.dropna(subset=['revenue','budget'], axis=0)
+    df_return = df_return.dropna(subset=['revenue','budget'])
     df_return['return']  = (df_return['revenue']-df_return['budget']) / df_return['budget'] # in percent
     df_return.reset_index(drop=True, inplace=True)
 
@@ -316,8 +315,8 @@ def dialogue_genre_scores(title_corpus):
     """Extract the neg. and pos. sentiment analysis compound scores for every genre."""
 
     # get unqiue genres list
-    title_corpus.dropna(subset=['genresIMDB'], inplace=True, axis=0)
-    title_corpus.reset_index(drop=True, inplace=True)
+    title_corpus = title_corpus.dropna(subset=['genresIMDB'])
+    title_corpus = title_corpus.reset_index(drop=True)
     genres = title_corpus['genresIMDB'].str.split(' ')
     res = []
     for k in range(len(genres)):
@@ -330,7 +329,7 @@ def dialogue_genre_scores(title_corpus):
     neg_score_ratings = []
     pos_score_ratings = []
     for genre in genre_list:
-        val = title_corpus[title_corpus['genresIMDB'].str.contains(genre)].groupby('project_score').mean()['ratingIMDB']
+        val = title_corpus[title_corpus['genresIMDB'].str.contains(genre)].groupby('project_score')['ratingIMDB'].mean()
         try:
             neg_score_ratings.append(val.iloc[0])
         except:
@@ -344,7 +343,7 @@ def dialogue_genre_scores(title_corpus):
     neg_votes_ratings = []
     pos_votes_ratings = []
     for genre in genre_list:
-        val = title_corpus[title_corpus['genresIMDB'].str.contains(genre)].groupby('project_score').mean()['votes']
+        val = title_corpus[title_corpus['genresIMDB'].str.contains(genre)].groupby('project_score')['votes'].mean()
         try:
             neg_votes_ratings.append(val.iloc[0])
         except:
@@ -389,7 +388,7 @@ def keyword_genre_scores(genome_movies_sentiment):
     neg_score_ratings = []
     pos_score_ratings = []
     for genre in genre_list:
-        val = title_corpus[title_corpus['genres'].str.contains(genre)].groupby('project_score').mean()['averageRating']
+        val = title_corpus[title_corpus['genres'].str.contains(genre)].groupby('project_score')['averageRating'].mean()
         try:
             neg_score_ratings.append(val.iloc[0])
         except:
@@ -403,7 +402,7 @@ def keyword_genre_scores(genome_movies_sentiment):
     neg_votes_ratings = []
     pos_votes_ratings = []
     for genre in genre_list:
-        val = title_corpus[title_corpus['genres'].str.contains(genre)].groupby('project_score').mean()['numVotes']
+        val = title_corpus[title_corpus['genres'].str.contains(genre)].groupby('project_score')['numVotes'].mean()
         try:
             neg_votes_ratings.append(val.iloc[0])
         except:
@@ -428,7 +427,7 @@ def keyword_genre_scores(genome_movies_sentiment):
             pos_score_count.append(np.nan)
 
     # mean sentiment by year
-    mean_score_year = title_corpus.groupby('startYear').mean()['sentiment_score']
+    mean_score_year = title_corpus.groupby('startYear')['sentiment_score'].mean()
 
     return genre_list, pos_score_ratings, neg_score_ratings, pos_score_count, neg_score_count, pos_votes_ratings, neg_votes_ratings, mean_score_year
 

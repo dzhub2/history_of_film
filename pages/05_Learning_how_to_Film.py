@@ -3,7 +3,7 @@ import streamlit as st
 from  streamlit_functions import *
 from matplotlib import pyplot as plt
 import seaborn as sns
-sns.set()
+sns.set_theme()
 
 ### Define page-wide parameters
 BGCOLOR = 'lightskyblue'
@@ -16,7 +16,7 @@ CACHESUPPRESS = True
 st.sidebar.markdown(":male-scientist: Learning how to Film :male-scientist:")
 
 ### Load film data
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST, allow_output_mutation=True)
+@st.cache_data
 def st_load_regression_result():
     return load_regression_result()
 
@@ -58,8 +58,7 @@ st.write("The best model performance was achieved using gradient boosted decisio
 ## Plotting:
 # styling
 sns.color_palette("pastel")
-sns.set(font="Garamond")
-sns.set(rc={'axes.facecolor':'white'})
+sns.set_theme(font="Garamond", rc={'axes.facecolor':'white'})
 plt.rcParams['xtick.major.size'] = 4
 plt.rcParams['xtick.major.width'] = 1
 plt.rcParams['xtick.bottom'] = True

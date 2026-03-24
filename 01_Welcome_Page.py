@@ -21,7 +21,7 @@ st.sidebar.markdown(":film_projector: Welcome Page :film_projector:")
 # movies = st_load_movie_data_from_genome()
 
 ### Load film data
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_load_movie_filtered_director():
     return load_movie_filtered_director()
 movies = st_load_movie_filtered_director()
@@ -87,9 +87,9 @@ _, col2, _ = st.columns([0.4, 1.5, 0.2])
 with col2:
     st.subheader("Most Common Words in Film Titles")
 
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
-def st_create_wordcloud(movies):
-    return create_wordcloud(movies)
+@st.cache_resource
+def st_create_wordcloud(_movies):
+    return create_wordcloud(_movies)
 title_wordcloud = st_create_wordcloud(movies)
 
 

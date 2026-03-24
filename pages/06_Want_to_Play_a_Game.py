@@ -15,7 +15,7 @@ CACHESUPPRESS = True
 st.sidebar.markdown(":question: Want to Play a Game :question:")
 
 ### Load film data
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_load_quotes():
     return load_quotes()
 

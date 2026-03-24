@@ -23,7 +23,7 @@ MARKEREDGECOLOR = 'midnightblue'
 st.sidebar.markdown(":roller_coaster: Film in Numbers :roller_coaster:")
 
 ### Load film data
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_load_movie_filtered_director():
     return load_movie_filtered_director()
 movies = st_load_movie_filtered_director()
@@ -44,7 +44,7 @@ st.write("**Note:** All graphics are **interactive**. You can hover the cursor, 
 ##################################################################################
 ### Plot: Lineplot: Highest rated movie and num votes by year
 
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_wrangle_highest_rated_movies_lineplot(movies):
     return wrangle_highest_rated_movies_lineplot(movies)
 max_rating_year, nr_movies_per_year, total_ratings_per_year, \
@@ -142,7 +142,7 @@ fig_highest_rated.data[3].line.color = "#ff75b0"
 
 ##################################################################################
 ### Plot: Bar: The number of movies (in percent) per year as an animation by genre
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_wrangle_count_genre_year_bar(movies, nr_movies_per_year):
     return wrangle_count_genre_year_bar(movies, nr_movies_per_year)
 genres_bar_percent, genre_list = st_wrangle_count_genre_year_bar(movies, nr_movies_per_year)
@@ -179,7 +179,7 @@ fig_genre_freq.update_layout(
 )
 ##################################################################################
 ### Plot: Lineplot: The mean rating per genre by year
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_wrangle_rating_genre_year(movies):
     return wrangle_rating_genre_year(movies)
 mean_rating_genre_year = st_wrangle_rating_genre_year(movies)
@@ -228,7 +228,7 @@ fig_mean_rating_genre.update_layout(
 )
 ##################################################################################
 ### Plot: Lineplot: The mean runtime per genre by year
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_wrangle_runtime_genre_year(movies):
     return wrangle_runtime_genre_year(movies)
 mean_runtime_genre_year = st_wrangle_runtime_genre_year(movies)
@@ -277,7 +277,7 @@ fig_mean_runtime_genre.update_layout(
 )
 ##################################################################################
 ### Plot: Lineplot: The mean revenue per genre by year
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_wrangle_revenue_genre_year(movies):
     return wrangle_revenue_genre_year(movies)
 mean_revenue_genre_year = st_wrangle_revenue_genre_year(movies)
@@ -326,7 +326,7 @@ fig_mean_revenue_genre.update_layout(
 )
 ##################################################################################
 ### Plot: Lineplot: Mean budget, mean revenue, most expensive movie per year
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_wrangle_budget_revenue_movies_lineplot(movies):
     return wrangle_budget_revenue_movies_lineplot(movies)
 
@@ -429,7 +429,7 @@ st.plotly_chart(fig_financial)
 
 ##################################################################################
 ### Plot: Lineplot: Biggest Box Office Hits and Flops
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_return_by_year(movies):
     return return_by_year(movies)
 
@@ -508,7 +508,7 @@ st.plotly_chart(fig_return)
 
 ##################################################################################
 ### Franchise Information
-@st.cache(suppress_st_warning=CACHESUPPRESS, persist=PERSIST)
+@st.cache_data
 def st_load_franchises():
     return load_franchises()
 
