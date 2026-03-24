@@ -102,7 +102,7 @@ fig_highest_rated.update_layout(
 	#create 1st y axis			
 	yaxis=dict(
 		title="IMDB Rating",
-		titlefont=dict(color="#3fa4e6", size=FONTSIZE),
+		title_font=dict(color="#3fa4e6", size=FONTSIZE),
 		tickfont=dict(color="#3fa4e6", size=FONTSIZE),
         showgrid=True,
 		range=[5.99, 9.6],
@@ -111,12 +111,12 @@ fig_highest_rated.update_layout(
 		#create 2nd y axis	
 		yaxis2=dict(title="Votes",overlaying="y",
 					side="right",
-					titlefont=dict(color="#ff75b0", size=FONTSIZE),
+					title_font=dict(color="#ff75b0", size=FONTSIZE),
 					tickfont=dict(color="#ff75b0", size=FONTSIZE),
 					showgrid=False,
 					range=[0, 300000]
 	),
-		xaxis=dict(title="Year", titlefont=dict(size=FONTSIZE),
+		xaxis=dict(title="Year", title_font=dict(size=FONTSIZE),
 		tickfont=dict(size=FONTSIZE),),
 )
 
@@ -171,10 +171,10 @@ fig_genre_freq.update_layout(
     font_size=FONTSIZE-2,
     plot_bgcolor = 'rgba(0, 0, 0, 0)',
 	yaxis = dict(
-	titlefont=dict(size=FONTSIZE),
+	title_font=dict(size=FONTSIZE),
 	tickfont=dict(size=FONTSIZE),
 	),
-	xaxis=dict(titlefont=dict(size=FONTSIZE),
+	xaxis=dict(title_font=dict(size=FONTSIZE),
 	tickfont=dict(size=FONTSIZE),),
 )
 ##################################################################################
@@ -207,10 +207,10 @@ fig_mean_rating_genre.update_layout(
 	yaxis=dict(
 		title="Mean IMDB Rating",
         range=[3.9, 9.1],
-		titlefont=dict( size=FONTSIZE),
+		title_font=dict( size=FONTSIZE),
 		tickfont=dict( size=FONTSIZE)
 		),
-	xaxis=dict(title="Year", titlefont=dict( size=FONTSIZE),
+	xaxis=dict(title="Year", title_font=dict( size=FONTSIZE),
 		tickfont=dict( size=FONTSIZE))
 )
 
@@ -256,10 +256,10 @@ fig_mean_runtime_genre.update_layout(
 	yaxis=dict(
 		title="Mean Runtime [minutes]",
         range=[50, 170],
-		titlefont=dict( size=FONTSIZE),
+		title_font=dict( size=FONTSIZE),
 		tickfont=dict( size=FONTSIZE)
 		),
-	xaxis=dict(title="Year", titlefont=dict( size=FONTSIZE),
+	xaxis=dict(title="Year", title_font=dict( size=FONTSIZE),
 		tickfont=dict( size=FONTSIZE))
 )
 
@@ -305,10 +305,10 @@ fig_mean_revenue_genre.update_layout(
 	yaxis=dict(
 		title="Mean Revenue in $",
         range=[-50000000, 700e6],
-		titlefont=dict( size=FONTSIZE),
+		title_font=dict( size=FONTSIZE),
 		tickfont=dict( size=FONTSIZE)
 		),
-	xaxis=dict(title="Year", titlefont=dict( size=FONTSIZE),
+	xaxis=dict(title="Year", title_font=dict( size=FONTSIZE),
 		tickfont=dict( size=FONTSIZE))
 )
 
@@ -384,17 +384,17 @@ fig_financial.update_layout(
 	#create 1st y axis			
 	yaxis=dict(
 		title="Budget/Revenue [$]",
-		titlefont=dict(color="#1f77b4",size=FONTSIZE),
+		title_font=dict(color="#1f77b4",size=FONTSIZE),
 		tickfont=dict(color="#1f77b4",size=FONTSIZE),
         showgrid=True),
 				
 	#create 2nd y axis	
 	yaxis2=dict(title="Max. revenue [$]",overlaying="y",
 				side="right",
-				titlefont=dict(color="#ff75b0",size=FONTSIZE),
+				title_font=dict(color="#ff75b0",size=FONTSIZE),
 				tickfont=dict(color="#ff75b0",size=FONTSIZE),
                 showgrid=False),
-	xaxis=dict(title="Year", titlefont=dict(size=FONTSIZE),
+	xaxis=dict(title="Year", title_font=dict(size=FONTSIZE),
 		tickfont=dict(size=FONTSIZE))
 )
 
@@ -470,18 +470,18 @@ fig_return.update_layout(
 	#create 1st y axis			
 	yaxis=dict(
 		title="Hits - Return on Investment [multiple of budget]",
-		titlefont=dict(color="#3fa4e6",size=FONTSIZE),
+		title_font=dict(color="#3fa4e6",size=FONTSIZE),
 		tickfont=dict(color="#3fa4e6",size=FONTSIZE),
         showgrid=True,
 		range=[-150, 5000]),	
 	#create 2nd y axis	
 	yaxis2=dict(title="Flops - Return on Investment [multiple of budget]",overlaying="y",
 				side="right",
-				titlefont=dict(color="#ff75b0",size=FONTSIZE),
+				title_font=dict(color="#ff75b0",size=FONTSIZE),
 				tickfont=dict(color="#ff75b0",size=FONTSIZE),
                 showgrid=False,
 				range=[-1.1, 0]),
-	xaxis=dict(title="Year", titlefont=dict(size=FONTSIZE),
+	xaxis=dict(title="Year", title_font=dict(size=FONTSIZE),
 		tickfont=dict(size=FONTSIZE),)
 )
 

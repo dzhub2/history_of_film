@@ -41,11 +41,11 @@ with col2:
     if st.button("Give me a Film!"):
         pass
 
-mid1, col1, mid2, col2 = st.columns([2,1,10,10])
+col1, col2 = st.columns([1, 2])
 mymovie = movies.sample(1)
 with col1:
     imageLocation = st.empty()
-    imageLocation.image("https://image.tmdb.org/t/p/original"+mymovie['poster_path'].iloc[0], width=230)
+    imageLocation.image("https://image.tmdb.org/t/p/original"+mymovie['poster_path'].iloc[0], use_container_width=True)
 with col2:
     st.write(f":movie_camera: **Title** : {mymovie['primaryTitle'].iloc[0]}")
     st.write(f":100: **IMDB Rating** : {mymovie['averageRating'].iloc[0]}")
@@ -63,7 +63,7 @@ user_movie = st.selectbox(label='Enter a film title that you\'re curious about',
 						index=31
 )
 
-mid1, col1, mid2, col2 = st.columns([2,1,10,10])
+col1, col2 = st.columns([1, 2])
 mymovie = movies[movies['primaryTitle']==user_movie]
 
 if len(mymovie) == 0:
@@ -71,7 +71,7 @@ if len(mymovie) == 0:
 else:
     with col1:
         imageLocation = st.empty()
-        imageLocation.image("https://image.tmdb.org/t/p/original"+mymovie['poster_path'].iloc[0], width=230)
+        imageLocation.image("https://image.tmdb.org/t/p/original"+mymovie['poster_path'].iloc[0], use_container_width=True)
     with col2:
         st.write(f":movie_camera: **Title** : {mymovie['primaryTitle'].iloc[0]}")
         st.write(f":100: **IMDB Rating** : {mymovie['averageRating'].iloc[0]}")
