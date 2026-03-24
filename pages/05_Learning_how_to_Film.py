@@ -13,7 +13,7 @@ WIDTH_TO_CENTER = 3
 PERSIST = False
 CACHESUPPRESS = True
 
-st.sidebar.markdown(":male-scientist: Learning how to Film :male-scientist:")
+st.sidebar.markdown(":man_scientist: Learning how to Film :man_scientist:")
 
 ### Load film data
 @st.cache_data
@@ -25,7 +25,7 @@ importances_return, importances_rating = st_load_regression_result()
 ### Start the Page
 _, col2, _ = st.columns([0.1, 0.9, 0.1])
 with col2:
-    st.title(":male-scientist: Learning how to Film :male-scientist:")
+    st.title(":man_scientist: Learning how to Film :man_scientist:")
 
 _, col2, _ = st.columns([0.09, 0.2, 0.1])
 with col2:
