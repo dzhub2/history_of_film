@@ -1,5 +1,6 @@
 # Imports
 import streamlit as st
+import streamlit.components.v1 as components
 from  streamlit_functions import *
 
 import matplotlib.pyplot as plt
@@ -33,7 +34,7 @@ with col2:
 
 _, col2, _ = st.columns([0.1, 0.25, 0.1])
 with col2:
-    st.video("https://www.youtube.com/watch?v=BXsWn9DhF5g")
+    components.html('<iframe width="100%" height="315" src="https://www.youtube.com/embed/BXsWn9DhF5g?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>', height=315)
 
 ### Display a random movie suggestion
 col1, col2 = st.columns([3,5])

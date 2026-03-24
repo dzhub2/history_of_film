@@ -1,5 +1,6 @@
 # Imports
 import streamlit as st
+import streamlit.components.v1 as components
 from  streamlit_functions import *
 import base64
 import numpy as np
@@ -81,4 +82,4 @@ with st.form("my_form", clear_on_submit=False):
 
 _, col2, _ = st.columns([0.1, 0.25, 0.1])
 with col2:
-    st.video("https://www.youtube.com/watch?v=bBixD-rTB_c")
+    components.html('<iframe width="100%" height="315" src="https://www.youtube.com/embed/bBixD-rTB_c?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>', height=315)

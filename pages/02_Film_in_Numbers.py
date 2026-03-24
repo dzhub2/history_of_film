@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -35,7 +36,7 @@ with col2:
 
 _, col2, _ = st.columns([0.1, 0.25, 0.1])
 with col2:
-    st.video("https://www.youtube.com/watch?v=2-qrMz-JAzo")
+    components.html('<iframe width="100%" height="315" src="https://www.youtube.com/embed/Ps1-YlB1TIQ?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>', height=315)
 
 st.write("This page showcases the evolution of film throughout the years using different metrics like ratings, box office returns, etc. \
 The data is mostly based on the official [IMDB datasets](https://www.imdb.com/interfaces/), limited to the subset of films contained in the [MovieLens 25M dataset](https://grouplens.org/datasets/movielens/25m/). Information on budget and revenue was obtained from [TMDB](https://www.themoviedb.org/).")

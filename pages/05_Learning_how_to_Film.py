@@ -1,5 +1,6 @@
 # Imports
 import streamlit as st
+import streamlit.components.v1 as components
 from  streamlit_functions import *
 from matplotlib import pyplot as plt
 import seaborn as sns
@@ -29,7 +30,7 @@ with col2:
 
 _, col2, _ = st.columns([0.09, 0.2, 0.1])
 with col2:
-    st.video("https://www.youtube.com/watch?v=e9vrfEoc8_g")
+    components.html('<iframe width="100%" height="315" src="https://www.youtube.com/embed/e9vrfEoc8_g?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>', height=315)
 
 st.subheader("**Can Machine Learning be used to design the perfect film?**")
 st.write("On this page, we attempt to find the most relevant features to optimize a film's \

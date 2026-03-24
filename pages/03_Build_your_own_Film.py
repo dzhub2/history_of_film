@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -29,7 +30,7 @@ with col2:
 
 _, col2, _ = st.columns([0.1, 0.25, 0.1])
 with col2:
-    st.video("https://www.youtube.com/watch?v=JlQh4PeB8PE")
+    components.html('<iframe width="100%" height="315" src="https://www.youtube.com/embed/JlQh4PeB8PE?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>', height=315)
 
 st.write("This page is based on the tag genome data contained in the [MovieLens 25M dataset](https://grouplens.org/datasets/movielens/25m/). \
 There are a total of 1128 tags, each with a relevance score labeling ~12.000 films. According to the authors:\
