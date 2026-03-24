@@ -5,7 +5,7 @@
 A streamlit dashboard using data analytics and machine learning techniques to illustrate the evolution of cinema through the years and understand what makes a film popular.
 
 
-The online version of the app can be accessed through the above [link]([https:/https://historyoffilm-exkvsskdvdhvyw2akpu88b.streamlit.app/](https://historyoffilm-exkvsskdvdhvyw2akpu88b.streamlit.app/)). To start the app locally, run
+The online version of the app can be accessed through the above [link](https://historyoffilm-exkvsskdvdhvyw2akpu88b.streamlit.app/). To start the app locally, run
 
 ```
 streamlit run 01_Welcome_Page.py
